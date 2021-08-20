@@ -58,44 +58,6 @@ if(isset($_POST['Vaccination'])){
         document.location = 'Vaccination-Request.html'</script>";
     }
     echo "<script>document.location = 'Covid-Free.html'</script>";
-	/*$sql="SELECT wishlistid FROM wishlist_user "
-		." WHERE userid='".$_SESSION['user_id']."'";
-	$result = $con->query($sql);
-	$wishid=$result->fetch_assoc();	
-	if(!$result->num_rows)
-	{
-		$check ="SELECT wishlistid FROM wishlist_user "
-			." ORDER BY wishlistid ASC";
-		$result=$con->query($check);
-		$lastid=null;
-		while($row = $result->fetch_assoc()) 
-		{
-			$lastid = $row['wishlistid'];
-		}
-		$newIDno = substr($lastid, 3)+1;
-		$newIDno=str_pad($newIDno, 3, '0', STR_PAD_LEFT);
-		$newID="WSH".$newIDno;
-		$sql="INSERT INTO wishlist_user (wishlistid, userid) "
-			." VALUES ('".$newID."', '".$_SESSION['user_id']."')";
-		if(!$result = $con->query($sql))
-		{
-			echo $con->error;       
-		}
-		else{
-			$wishid['wishlistid']=$newID;
-		}
-
-	}
-	$sql="INSERT INTO wishlist_products (wishlistid, productid) "
-		." VALUES ('".$wishid['wishlistid']."', '".$_POST['wishaddProduct']."')";
-	if(!$result = $con->query($sql))
-	{
-		echo "<script>alert('Already added to Wishlist!!')</script>";
-	}
-	else
-	{
-		echo "<script>alert('Added to Wishlist!!')</script>";
-	}*/
 }
 else{
     echo "<script>document.location = 'Covid-Free.html'</script>";
