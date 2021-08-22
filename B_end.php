@@ -23,7 +23,7 @@ if(isset($_POST['Vaccination'])){
             }
             $newIDno = substr($lastid, 4)+1;
             $newIDno=str_pad($newIDno, 4, '0', STR_PAD_LEFT);
-            $newID="VC".$newIDno;
+            $newID=substr($lastid, 0,2 ).$newIDno;
         }
         else{
             $newID="VC0001";
@@ -53,7 +53,8 @@ else if(isset($_POST['Need-Help'])){
     echo $_POST['phone']."<br>";
     echo $_POST['city']."<br>";
     echo $_POST['address']."<br>";
-    $sql="SELECT email FROM vaccination_request "
+    echo $_POST['N_things']."<br>";
+    $sql="SELECT email FROM need_help "
 		." WHERE email='".$_POST['email']."'";
     echo $sql."<br>";
 	if(!$result = $con->query($sql))
@@ -64,7 +65,7 @@ else if(isset($_POST['Need-Help'])){
     print_r($wishid);
 	if(!$result->num_rows)
 	{
-		$check ="SELECT ID FROM vaccination_request "
+		$check ="SELECT ID FROM need_help "
 			." ORDER BY ID ASC";
 		$result=$con->query($check);
         if($result->num_rows)
@@ -79,13 +80,13 @@ else if(isset($_POST['Need-Help'])){
             echo $newIDno."<br>";
             $newIDno=str_pad($newIDno, 4, '0', STR_PAD_LEFT);
             echo $newIDno."<br>";
-            $newID="VC".$newIDno;
+            $newID=substr($lastid, 0,2 ).$newIDno;
         }
         else{
-            $newID="VC0001";
+            $newID="NH0001";
         }
         echo $newID."<br>";
-		$sql="INSERT INTO vaccination_request (ID, email, first_name, last_name, phone, city, address) VALUES ('".$newID."', '".$_POST['email']."', '".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['phone']."', '".$_POST['city']."', '".$_POST['address']."')";
+		$sql="INSERT INTO need_help (ID, email, first_name, last_name, phone, city, address,N_things) VALUES ('".$newID."', '".$_POST['email']."', '".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['phone']."', '".$_POST['city']."', '".$_POST['address']."', '".$_POST['N_things']."')";
         echo $sql."<br>";
 		if(!$result = $con->query($sql))
 		{
@@ -101,6 +102,7 @@ else if(isset($_POST['Need-Help'])){
         document.location = 'Vaccination-Request.html'</script>";
     }
     echo "<script>document.location = 'Covid-Free.html'</script>";
+    
 }
 else{
     echo "<script>document.location = 'Covid-Free.html'</script>";
