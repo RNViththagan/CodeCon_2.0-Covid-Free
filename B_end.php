@@ -28,7 +28,6 @@ if(isset($_POST['Vaccination'])){
         else{
             $newID="VC0001";
         }
-        echo $newID."<br>";
 		$sql="INSERT INTO vaccination_request (ID, email, first_name, last_name, phone, city, address) VALUES ('".$newID."', '".$_POST['email']."', '".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['phone']."', '".$_POST['city']."', '".$_POST['address']."')";
 		if(!$result = $con->query($sql))
 		{
@@ -99,13 +98,13 @@ else if(isset($_POST['Need-Help'])){
 	}
     else{
         echo "<script>alert('Email already entered!!');
-        document.location = 'Vaccination-Request.html'</script>";
+        document.location = 'Need-Help.html'</script>";
     }
     echo "<script>document.location = 'Covid-Free.html'</script>";
     
 }
 else{
-    echo "<script>document.location = 'Covid-Free.html'</script>";
+//    echo "<script>document.location = 'Covid-Free.html'</script>";
 }
 
 
